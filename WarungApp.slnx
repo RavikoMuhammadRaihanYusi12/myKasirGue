@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/WarungApp.Core/WarungApp.Core.csproj" />
+    <Project Path="src/WarungApp.Data/WarungApp.Data.csproj" />
+    <Project Path="src/WarungApp.Desktop/WarungApp.Desktop.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/WarungApp.Tests/WarungApp.Tests.csproj" />
+  </Folder>
+</Solution>

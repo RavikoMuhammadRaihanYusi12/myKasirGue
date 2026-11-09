@@ -1,0 +1,36 @@
+<UserControl x:Class="WarungApp.Desktop.Views.KategoriView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="320"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Grid.Column="0" Margin="0,0,16,0" ItemsSource="{Binding Daftar}"
+                  SelectedItem="{Binding Terpilih}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nama Kategori" Binding="{Binding Nama}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Border Grid.Column="1" Background="White" CornerRadius="8" Padding="16">
+            <StackPanel>
+                <TextBlock Text="Kategori" FontSize="16" FontWeight="Bold" Margin="0,0,0,12"/>
+                <TextBlock Text="Nama"/>
+                <TextBox Text="{Binding Nama, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,12"/>
+                <TextBlock Text="{Binding Pesan}" TextWrapping="Wrap" Foreground="{StaticResource WarnaUtama}" Margin="0,0,0,12"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="Simpan" Command="{Binding SimpanCommand}"/>
+                    <Button Grid.Column="2" Content="Kategori Baru" Style="{StaticResource TombolSekunder}"
+                            Command="{Binding BaruCommand}"/>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

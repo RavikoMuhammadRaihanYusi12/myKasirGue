@@ -1,0 +1,89 @@
+<UserControl x:Class="WarungApp.Desktop.Views.LaporanView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,12">
+            <StackPanel Margin="0,0,12,0">
+                <TextBlock Text="Dari tanggal"/>
+                <DatePicker SelectedDate="{Binding Dari}" Width="140"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,12,0">
+                <TextBlock Text="Sampai tanggal"/>
+                <DatePicker SelectedDate="{Binding Sampai}" Width="140"/>
+            </StackPanel>
+            <Button Content="Muat" VerticalAlignment="Bottom" Command="{Binding MuatCommand}"/>
+            <Button Content="Harian" VerticalAlignment="Bottom" Margin="8,0,0,0" Style="{StaticResource TombolSekunder}"
+                    Command="{Binding PeriodeHarianCommand}"/>
+            <Button Content="7 Hari" VerticalAlignment="Bottom" Margin="8,0,0,0" Style="{StaticResource TombolSekunder}"
+                    Command="{Binding PeriodeMingguanCommand}"/>
+            <Button Content="30 Hari" VerticalAlignment="Bottom" Margin="8,0,0,0" Style="{StaticResource TombolSekunder}"
+                    Command="{Binding PeriodeBulananCommand}"/>
+            <TextBlock Text="{Binding Pesan}" VerticalAlignment="Center" Margin="16,0,0,0"
+                       Foreground="{StaticResource WarnaBahaya}" TextWrapping="Wrap"/>
+        </StackPanel>
+
+        <UniformGrid Grid.Row="1" Columns="4" Margin="0,0,0,12">
+            <Border Background="White" CornerRadius="8" Padding="16" Margin="0,0,12,0">
+                <StackPanel>
+                    <TextBlock Text="Omzet" Foreground="#6B7D73"/>
+                    <TextBlock Text="{Binding OmzetTampil}" FontSize="22" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+            <Border Background="White" CornerRadius="8" Padding="16" Margin="0,0,12,0">
+                <StackPanel>
+                    <TextBlock Text="Laba kotor" Foreground="#6B7D73"/>
+                    <TextBlock Text="{Binding LabaTampil}" FontSize="22" FontWeight="Bold" Foreground="{StaticResource WarnaUtama}"/>
+                </StackPanel>
+            </Border>
+            <Border Background="White" CornerRadius="8" Padding="16" Margin="0,0,12,0">
+                <StackPanel>
+                    <TextBlock Text="Jumlah transaksi" Foreground="#6B7D73"/>
+                    <TextBlock Text="{Binding JumlahTransaksi}" FontSize="22" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+            <Border Background="White" CornerRadius="8" Padding="16">
+                <StackPanel>
+                    <TextBlock Text="Nilai stok (stok × harga beli)" Foreground="#6B7D73"/>
+                    <TextBlock Text="{Binding NilaiStokTampil}" FontSize="22" FontWeight="Bold"/>
+                </StackPanel>
+            </Border>
+        </UniformGrid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <DockPanel Grid.Column="0">
+                <TextBlock DockPanel.Dock="Top" Text="Barang terlaris" FontWeight="SemiBold" Margin="0,0,0,6"/>
+                <DataGrid ItemsSource="{Binding Terlaris}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Barang" Binding="{Binding Barang}" Width="*"/>
+                        <DataGridTextColumn Header="Terjual" Binding="{Binding Qty}" Width="80"/>
+                        <DataGridTextColumn Header="Omzet" Binding="{Binding Omzet, Converter={StaticResource Rupiah}}" Width="110"/>
+                        <DataGridTextColumn Header="Laba" Binding="{Binding Laba, Converter={StaticResource Rupiah}}" Width="110"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+
+            <DockPanel Grid.Column="2">
+                <TextBlock DockPanel.Dock="Top" Text="Barang tidak laku pada periode" FontWeight="SemiBold" Margin="0,0,0,6"/>
+                <DataGrid ItemsSource="{Binding TidakLaku}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Barang" Binding="{Binding Barang}" Width="*"/>
+                        <DataGridTextColumn Header="Stok" Binding="{Binding Stok}" Width="80"/>
+                        <DataGridTextColumn Header="Nilai stok" Binding="{Binding NilaiStok, Converter={StaticResource Rupiah}}" Width="120"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</UserControl>

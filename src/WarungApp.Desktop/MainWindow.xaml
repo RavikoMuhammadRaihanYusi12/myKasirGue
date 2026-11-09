@@ -1,0 +1,60 @@
+<Window x:Class="WarungApp.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WarungApp" Height="760" Width="1240"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        Icon="Assets/WarungApp.ico">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Background="{StaticResource WarnaUtama}">            <DockPanel Margin="0,16,0,16">
+                <StackPanel DockPanel.Dock="Bottom">
+                    <TextBlock Text="{Binding NamaUser}" Foreground="White" FontWeight="SemiBold" Margin="20,0,20,2"/>
+                    <TextBlock Text="{Binding NamaRole}" Foreground="#BFDCCB" Margin="20,0,20,10"/>
+                    <Button Content="Keluar / Ganti User" Margin="20,0,20,0" Style="{StaticResource TombolSekunder}"
+                            Command="{Binding LogoutCommand}"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="WarungApp" Foreground="White" FontSize="22" FontWeight="Bold" Margin="20,0,20,20"/>
+
+                    <ItemsControl ItemsSource="{Binding Menu}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Judul}" Command="{Binding DataContext.BukaMenuCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" CommandParameter="{Binding}"
+                                        Foreground="White" FontSize="15" Cursor="Hand" Background="Transparent" Padding="20,10"
+                                        BorderThickness="0" HorizontalAlignment="Left" HorizontalContentAlignment="Left"
+                                        Style="{StaticResource {x:Type Button}}">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="Bg" Background="Transparent" Padding="20,10">
+                                                <ContentPresenter HorizontalAlignment="Left"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="Bg" Property="Background" Value="#2E8A5E"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <DockPanel Grid.Column="1">
+            <Border DockPanel.Dock="Top" Background="White" Padding="20,14">
+                <TextBlock Text="{Binding JudulHalaman}" FontSize="20" FontWeight="Bold"/>
+            </Border>
+            <ContentControl Content="{Binding KontenAktif}"/>
+        </DockPanel>
+    </Grid>
+</Window>
+

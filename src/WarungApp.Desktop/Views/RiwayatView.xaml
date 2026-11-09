@@ -1,0 +1,66 @@
+<UserControl x:Class="WarungApp.Desktop.Views.RiwayatView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,12">
+            <StackPanel Margin="0,0,12,0">
+                <TextBlock Text="Dari tanggal"/>
+                <DatePicker SelectedDate="{Binding Dari}" Width="140"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,12,0">
+                <TextBlock Text="Sampai tanggal"/>
+                <DatePicker SelectedDate="{Binding Sampai}" Width="140"/>
+            </StackPanel>
+            <Button Content="Muat" VerticalAlignment="Bottom" Command="{Binding MuatCommand}"/>
+            <Button Content="Batalkan Transaksi (Void)" VerticalAlignment="Bottom" Margin="8,0,0,0"
+                    Background="{StaticResource WarnaBahaya}" Command="{Binding VoidCommand}"
+                    Visibility="{Binding IsPemilik, Converter={StaticResource BoolToVis}}"/>
+            <TextBlock Text="{Binding Pesan}" VerticalAlignment="Center" Margin="16,0,0,0" TextWrapping="Wrap">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="{StaticResource WarnaUtama}"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding PesanError}" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource WarnaBahaya}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </StackPanel>
+
+        <DockPanel Grid.Row="1" Margin="0,0,0,12">
+            <TextBlock DockPanel.Dock="Top" Text="{Binding Ringkasan}" FontWeight="SemiBold" Margin="0,0,0,6"/>
+            <DataGrid ItemsSource="{Binding Daftar}" SelectedItem="{Binding Terpilih}"
+                      SelectionChanged="GridSelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="No. Transaksi" Binding="{Binding NoTransaksi}" Width="170"/>
+                    <DataGridTextColumn Header="Tanggal" Binding="{Binding Tanggal, StringFormat={}{0:dd/MM/yyyy HH:mm}}" Width="140"/>
+                    <DataGridTextColumn Header="Kasir" Binding="{Binding Kasir}" Width="*"/>
+                    <DataGridTextColumn Header="Total" Binding="{Binding Total, Converter={StaticResource Rupiah}}" Width="110"/>
+                    <DataGridTextColumn Header="Bayar" Binding="{Binding Bayar, Converter={StaticResource Rupiah}}" Width="110"/>
+                    <DataGridTextColumn Header="Kembalian" Binding="{Binding Kembalian, Converter={StaticResource Rupiah}}" Width="110"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="90"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+
+        <DockPanel Grid.Row="2">
+            <TextBlock DockPanel.Dock="Top" Text="Detail item" FontWeight="SemiBold" Margin="0,0,0,6"/>
+            <DataGrid ItemsSource="{Binding ItemTerpilih}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Barang" Binding="{Binding Barang}" Width="*"/>
+                    <DataGridTextColumn Header="Qty" Binding="{Binding Qty}" Width="70"/>
+                    <DataGridTextColumn Header="Harga Jual" Binding="{Binding HargaJual, Converter={StaticResource Rupiah}}" Width="110"/>
+                    <DataGridTextColumn Header="Subtotal" Binding="{Binding Subtotal, Converter={StaticResource Rupiah}}" Width="110"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+    </Grid>
+</UserControl>

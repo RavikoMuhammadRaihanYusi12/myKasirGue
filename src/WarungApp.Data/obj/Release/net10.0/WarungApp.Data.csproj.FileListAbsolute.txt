@@ -1,0 +1,17 @@
+E:\Projects\myKasirGue\src\WarungApp.Data\bin\Release\net10.0\WarungApp.Data.deps.json
+E:\Projects\myKasirGue\src\WarungApp.Data\bin\Release\net10.0\WarungApp.Data.runtimeconfig.json
+E:\Projects\myKasirGue\src\WarungApp.Data\bin\Release\net10.0\WarungApp.Data.dll
+E:\Projects\myKasirGue\src\WarungApp.Data\bin\Release\net10.0\WarungApp.Data.pdb
+E:\Projects\myKasirGue\src\WarungApp.Data\bin\Release\net10.0\WarungApp.Core.dll
+E:\Projects\myKasirGue\src\WarungApp.Data\bin\Release\net10.0\WarungApp.Core.pdb
+E:\Projects\myKasirGue\src\WarungApp.Data\obj\Release\net10.0\WarungApp.Data.csproj.AssemblyReference.cache
+E:\Projects\myKasirGue\src\WarungApp.Data\obj\Release\net10.0\WarungApp.Data.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projects\myKasirGue\src\WarungApp.Data\obj\Release\net10.0\WarungApp.Data.AssemblyInfoInputs.cache
+E:\Projects\myKasirGue\src\WarungApp.Data\obj\Release\net10.0\WarungApp.Data.AssemblyInfo.cs
+E:\Projects\myKasirGue\src\WarungApp.Data\obj\Release\net10.0\WarungApp.Data.csproj.CoreCompileInputs.cache
+E:\Projects\myKasirGue\src\WarungApp.Data\obj\Release\net10.0\WarungAp.813ADB85.Up2Date
+E:\Projects\myKasirGue\src\WarungApp.Data\obj\Release\net10.0\WarungApp.Data.dll
+E:\Projects\myKasirGue\src\WarungApp.Data\obj\Release\net10.0\refint\WarungApp.Data.dll
+E:\Projects\myKasirGue\src\WarungApp.Data\obj\Release\net10.0\WarungApp.Data.pdb
+E:\Projects\myKasirGue\src\WarungApp.Data\obj\Release\net10.0\WarungApp.Data.genruntimeconfig.cache
+E:\Projects\myKasirGue\src\WarungApp.Data\obj\Release\net10.0\ref\WarungApp.Data.dll

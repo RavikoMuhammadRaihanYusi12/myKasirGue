@@ -1,0 +1,112 @@
+<UserControl x:Class="WarungApp.Desktop.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#F5F5F5">
+    <ScrollViewer Margin="24" VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <!-- Quick Summary Cards -->
+            <UniformGrid Columns="4" Margin="0,0,0,24">
+                <!-- Omzet -->
+                <Border CornerRadius="12" Padding="20" Margin="0,0,12,0" Background="#10B98122" BorderThickness="1" BorderBrush="#10B98144">
+                    <StackPanel>
+                        <TextBlock Text="💵 Omzet Hari Ini" Foreground="#0F766E" FontSize="13" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                        <TextBlock Text="{Binding OmzetTampil}" FontSize="28" FontWeight="Bold" Foreground="#10B981"/>
+                    </StackPanel>
+                </Border>
+                <!-- Laba -->
+                <Border CornerRadius="12" Padding="20" Margin="0,0,12,0" Background="#F9731622" BorderThickness="1" BorderBrush="#F9731644">
+                    <StackPanel>
+                        <TextBlock Text="📈 Laba Kotor Hari Ini" Foreground="#92400E" FontSize="13" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                        <TextBlock Text="{Binding LabaTampil}" FontSize="28" FontWeight="Bold" Foreground="#F97316"/>
+                    </StackPanel>
+                </Border>
+                <!-- Transaksi -->
+                <Border CornerRadius="12" Padding="20" Margin="0,0,12,0" Background="#10B98122" BorderThickness="1" BorderBrush="#10B98144">
+                    <StackPanel>
+                        <TextBlock Text="🛒 Jumlah Transaksi" Foreground="#0F766E" FontSize="13" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                        <TextBlock Text="{Binding JumlahTransaksi}" FontSize="28" FontWeight="Bold" Foreground="#10B981"/>
+                    </StackPanel>
+                </Border>
+                <!-- Stok Menipis -->
+                <Border CornerRadius="12" Padding="20" Background="#EF444422" BorderThickness="1" BorderBrush="#EF444444">
+                    <StackPanel>
+                        <TextBlock Text="⚠️ Stok Menipis" Foreground="#7F1D1D" FontSize="13" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                        <TextBlock Text="{Binding JumlahMenipis}" FontSize="28" FontWeight="Bold" Foreground="#EF4444"/>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+
+            <!-- Terlaris Section -->
+            <StackPanel Margin="0,24,0,0">
+                <TextBlock Text="⭐ 5 Barang Terlaris Hari Ini" FontWeight="Bold" FontSize="16" Foreground="#1F2937" Margin="0,0,0,12"/>
+                <Border CornerRadius="12" Background="White" BorderThickness="1" BorderBrush="#E5E7EB" Padding="1">
+                    <ItemsControl ItemsSource="{Binding Terlaris}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="0,1,0,0" BorderBrush="#E5E7EB" Padding="16">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Barang}" VerticalAlignment="Center" Foreground="#1F2937"/>
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Qty}" FontWeight="SemiBold" Foreground="#10B981" FontSize="14"/>
+                                            <TextBlock Text="terjual" FontSize="11" Foreground="#6B7280"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Omzet, Converter={StaticResource Rupiah}}" FontWeight="SemiBold" Foreground="#10B981" FontSize="14"/>
+                                            <TextBlock Text="omzet" FontSize="11" Foreground="#6B7280"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                            <TextBlock Text="{Binding Laba, Converter={StaticResource Rupiah}}" FontWeight="SemiBold" Foreground="#F97316" FontSize="14"/>
+                                            <TextBlock Text="laba" FontSize="11" Foreground="#6B7280"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Border>
+            </StackPanel>
+
+            <!-- Stok Menipis Section -->
+            <StackPanel Margin="0,24,0,0">
+                <TextBlock Text="📦 Barang Stok Menipis" FontWeight="Bold" FontSize="16" Foreground="#1F2937" Margin="0,0,0,12"/>
+                <Border CornerRadius="12" Background="White" BorderThickness="1" BorderBrush="#E5E7EB" Padding="1">
+                    <ItemsControl ItemsSource="{Binding StokMenipis}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="0,1,0,0" BorderBrush="#E5E7EB" Padding="16">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Barang}" VerticalAlignment="Center" Foreground="#1F2937"/>
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Stok}" FontWeight="SemiBold" Foreground="#EF4444" FontSize="14"/>
+                                            <TextBlock Text="stok" FontSize="11" Foreground="#6B7280"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding StokMinimum}" FontWeight="SemiBold" Foreground="#10B981" FontSize="14"/>
+                                            <TextBlock Text="minimal" FontSize="11" Foreground="#6B7280"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                            <TextBlock Text="{Binding Satuan}" FontWeight="SemiBold" Foreground="#6B7280" FontSize="14"/>
+                                            <TextBlock Text="satuan" FontSize="11" Foreground="#6B7280"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,11 @@
+E:\Projects\myKasirGue\src\WarungApp.Core\bin\Debug\net10.0\WarungApp.Core.deps.json
+E:\Projects\myKasirGue\src\WarungApp.Core\bin\Debug\net10.0\WarungApp.Core.dll
+E:\Projects\myKasirGue\src\WarungApp.Core\bin\Debug\net10.0\WarungApp.Core.pdb
+E:\Projects\myKasirGue\src\WarungApp.Core\obj\Debug\net10.0\WarungApp.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projects\myKasirGue\src\WarungApp.Core\obj\Debug\net10.0\WarungApp.Core.AssemblyInfoInputs.cache
+E:\Projects\myKasirGue\src\WarungApp.Core\obj\Debug\net10.0\WarungApp.Core.AssemblyInfo.cs
+E:\Projects\myKasirGue\src\WarungApp.Core\obj\Debug\net10.0\WarungApp.Core.csproj.CoreCompileInputs.cache
+E:\Projects\myKasirGue\src\WarungApp.Core\obj\Debug\net10.0\WarungApp.Core.dll
+E:\Projects\myKasirGue\src\WarungApp.Core\obj\Debug\net10.0\refint\WarungApp.Core.dll
+E:\Projects\myKasirGue\src\WarungApp.Core\obj\Debug\net10.0\WarungApp.Core.pdb
+E:\Projects\myKasirGue\src\WarungApp.Core\obj\Debug\net10.0\ref\WarungApp.Core.dll
